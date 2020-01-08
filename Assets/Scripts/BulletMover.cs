@@ -18,11 +18,16 @@ public class BulletMover : MonoBehaviour
         this.transform.Translate(Vector3.forward * Time.deltaTime * Speed);
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider other)
     {
-        if (collider.tag != "Player")
+        if (other.tag != "Player")
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("CRASH!");
     }
 }

@@ -42,15 +42,18 @@ public class PlayerController : MonoBehaviour
         var verticalInput = Input.GetAxis("Vertical");
         var horizontalInput = Input.GetAxis("Horizontal");
         var characterController = this.gameObject.GetComponent<CharacterController>();
-        if (characterController.isGrounded)
-        {
-            this.yVelocity = 0;
-        }
         var jumpPressed = Input.GetButtonDown("Jump");
         var jumping = jumpPressed && characterController.isGrounded;
-        this.yVelocity = jumping ? JumpStrength : yVelocity - Gravity * Time.deltaTime;
+        if (jumping)
+        {
+            this.yVelocity = JumpStrength;
+        }
+        else
+        {
+            this.yVelocity -= Gravity * Time.deltaTime;
+        }
         var horizontalPlaneMovement = this.gameObject.transform.TransformDirection(horizontalInput * MoveSpeed * Time.deltaTime, 0, verticalInput * MoveSpeed * Time.deltaTime);
-        characterController.Move(horizontalPlaneMovement + new Vector3(0, this.yVelocity, 0));
+        characterController.Move(horizontalPlaneMovement + new Vector3(0, this.yVelocity, 0) * Time.deltaTime);
     }
 
     private void MoveCamera()
