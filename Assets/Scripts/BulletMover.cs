@@ -28,6 +28,12 @@ public class BulletMover : MonoBehaviour
         if (otherObjectData.DestroyedByBullets)
         {
             Destroy(other.gameObject);
+
+            var deathObject = otherObjectData.DeathObject;
+            if (deathObject != null)
+            {
+                Instantiate(deathObject, other.transform.position, other.transform.rotation);
+            }
         }
     }
 }

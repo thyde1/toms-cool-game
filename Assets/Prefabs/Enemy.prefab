@@ -124,3 +124,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletDestroyer: 1
   DestroyedByBullets: 1
+  DeathObject: {fileID: 9175915531272565286, guid: c32ed6eac4864264d8e2c040c8cf6a70,
+    type: 3}
