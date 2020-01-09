@@ -23,7 +23,13 @@ public class DamageTaker : MonoBehaviour
         {
             return;
         }
-        if (this.GetComponent<PlayerController>() != null && !otherObjectData.DealsDamageToPlayer)
+        var isPlayer = this.GetComponent<PlayerController>() != null;
+        if (isPlayer && !otherObjectData.DealsDamageToPlayer)
+        {
+            return;
+        }
+
+        if (!isPlayer && otherObjectData.DealsDamageToPlayer)
         {
             return;
         }
