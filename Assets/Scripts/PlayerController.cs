@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public float JumpStrength = 5;
     public float Gravity = 9.81f;
     public float MouseSensitivity = 1;
-    public GameObject bullet;
 
     private float yVelocity = 0;
 
@@ -23,16 +22,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         this.MovePlayer();
-        this.HandleFiring();
         this.MoveCamera();
-    }
-
-    private void HandleFiring()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            Instantiate(this.bullet, this.transform.position, this.transform.rotation);
-        }
     }
 
     private void MovePlayer()

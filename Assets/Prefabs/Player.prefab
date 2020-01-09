@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1233005067679648597}
   - component: {fileID: 1233005067679648598}
   - component: {fileID: 5155138213527446526}
+  - component: {fileID: 1551045413337890784}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -115,7 +116,6 @@ MonoBehaviour:
   JumpStrength: 5
   Gravity: 9.81
   MouseSensitivity: 3
-  bullet: {fileID: 1260400531544742582, guid: 87e65cd860aee764097d190e5d37eff4, type: 3}
 --- !u!143 &1233005067679648598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -147,6 +147,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletDestroyer: 0
+--- !u!114 &1551045413337890784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233005067679648592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2604e3c6daa6a43439eaca0f2c96250c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 1260400531544742582, guid: 87e65cd860aee764097d190e5d37eff4, type: 3}
+  ReloadSpeed: 0.1
 --- !u!1 &1233005067859352033
 GameObject:
   m_ObjectHideFlags: 0
