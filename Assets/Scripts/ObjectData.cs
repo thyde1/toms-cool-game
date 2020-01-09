@@ -3,5 +3,7 @@ using System.Collections;
 
 public class ObjectData : MonoBehaviour
 {
-    public bool BulletDestroyer;
+    public bool BulletDestroyer = false;
+
+    public bool DestroyedByBullets = false;
 }

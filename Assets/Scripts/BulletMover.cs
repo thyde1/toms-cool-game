@@ -14,9 +14,20 @@ public class BulletMover : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.GetComponent<ObjectData>()?.BulletDestroyer).GetValueOrDefault(false))
+        var otherObjectData = other.gameObject.GetComponent<ObjectData>();
+        if (otherObjectData == null)
+        {
+            return;
+        }
+
+        if (otherObjectData.BulletDestroyer)
         {
             Destroy(this.gameObject);
+        }
+
+        if (otherObjectData.DestroyedByBullets)
+        {
+            Destroy(other.gameObject);
         }
     }
 }
