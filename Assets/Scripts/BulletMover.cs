@@ -6,12 +6,6 @@ public class BulletMover : MonoBehaviour
 {
     public float Speed = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -20,14 +14,9 @@ public class BulletMover : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player")
+        if ((other.gameObject.GetComponent<ObjectData>()?.BulletDestroyer).GetValueOrDefault(false))
         {
             Destroy(this.gameObject);
         }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("CRASH!");
     }
 }

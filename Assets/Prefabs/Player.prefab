@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1233005067679648593}
   - component: {fileID: 1233005067679648597}
   - component: {fileID: 1233005067679648598}
+  - component: {fileID: 5155138213527446526}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -111,9 +112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 1233005067859352035}
   MoveSpeed: 5
-  JumpStrength: 0.5
-  Gravity: 3
-  MouseSensitivity: 1
+  JumpStrength: 5
+  Gravity: 9.81
+  MouseSensitivity: 3
   bullet: {fileID: 1260400531544742582, guid: 87e65cd860aee764097d190e5d37eff4, type: 3}
 --- !u!143 &1233005067679648598
 CharacterController:
@@ -133,6 +134,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5155138213527446526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233005067679648592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605413fcfa534184e9df03922d75259b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletDestroyer: 0
 --- !u!1 &1233005067859352033
 GameObject:
   m_ObjectHideFlags: 0

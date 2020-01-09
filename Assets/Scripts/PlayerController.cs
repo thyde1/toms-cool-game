@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public Camera Camera;
     public float MoveSpeed = 5;
     public float JumpStrength = 5;
-    public float Gravity = 1;
+    public float Gravity = 9.81f;
     public float MouseSensitivity = 1;
     public GameObject bullet;
 
