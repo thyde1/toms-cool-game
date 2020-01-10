@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BulletMover : MonoBehaviour
@@ -9,20 +10,28 @@ public class BulletMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var rayHits = Physics.RaycastAll(this.transform.position, transform.TransformDirection(Vector3.forward), Time.deltaTime * Speed);
+        var hitColliders = rayHits.Select(h => h.collider);
+        this.HandleHits(hitColliders);
         this.transform.Translate(Vector3.forward * Time.deltaTime * Speed);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void HandleHits(IEnumerable<Collider> others)
     {
-        var otherObjectData = other.gameObject.GetComponent<ObjectData>();
-        if (otherObjectData == null)
+        foreach (var other in others)
         {
-            return;
-        }
+            if (other.gameObject.TryGetComponent<DamageTaker>(out var damageTaker))
+            {
+                damageTaker.TakeDamage(this.gameObject);
+            }
 
-        if (otherObjectData.BulletDestroyer)
-        {
-            Destroy(this.gameObject);
+            var otherObjectData = other.gameObject.GetComponent<ObjectData>();
+            if (otherObjectData != null && otherObjectData.BulletDestroyer)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
         }
     }
+
 }

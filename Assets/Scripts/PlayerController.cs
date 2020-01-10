@@ -25,20 +25,6 @@ public class PlayerController : MonoBehaviour
         this.MoveCamera();
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        var otherObjectData = hit.collider.GetComponentInParent<ObjectData>();
-        if (!otherObjectData)
-        {
-            return;
-        }
-
-        if (!otherObjectData.CollidesWithPlayer)
-        {
-            Physics.IgnoreCollision(hit.collider, this.GetComponent<CharacterController>());
-        }
-    }
-
     private void MovePlayer()
     {
         var mouseX = Input.GetAxis("Mouse X") * MouseSensitivity;

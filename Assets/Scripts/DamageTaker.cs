@@ -8,15 +8,11 @@ public class DamageTaker : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        this.DealDamage(hit.gameObject);
+        this.TakeDamage(hit.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        this.DealDamage(other.gameObject);
-    }
 
-    private void DealDamage(GameObject other)
+    public void TakeDamage(GameObject other)
     {
         var otherObjectData = other.GetComponent<ObjectData>();
         if (!otherObjectData)

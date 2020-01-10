@@ -5,7 +5,7 @@ public class ObjectData : MonoBehaviour
 {
     public bool BulletDestroyer = false;
 
-    public bool CollidesWithPlayer = true;
+    public bool CollidesWithCharacters = true;
 
     public bool DealsDamage = false;
 

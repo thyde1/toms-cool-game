@@ -1144,6 +1144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletDestroyer: 0
-  CollidesWithPlayer: 0
+  CollidesWithCharacters: 0
   DealsDamage: 0
   DealsDamageToPlayer: 0
