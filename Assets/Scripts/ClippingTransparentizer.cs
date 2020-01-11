@@ -6,7 +6,7 @@ using System;
 
 public class ClippingTransparentizer : MonoBehaviour
 {
-    private IEnumerable<Renderer> disabledRenderers = Array.Empty<Renderer>();
+    private IEnumerable<Transparentizable> transparentizedObjects = Array.Empty<Transparentizable>();
 
     // Update is called once per frame
     void Update()
@@ -19,39 +19,28 @@ public class ClippingTransparentizer : MonoBehaviour
 
         var vectorToParent = this.transform.position - camera.transform.position;
         var rayHitsBetweenCameraAndParent = Physics.RaycastAll(camera.transform.position, vectorToParent, vectorToParent.magnitude);
-        var renderersToDisable = new List<Renderer>();
+        var gameObjectsToTransparentize = new List<Transparentizable>();
         foreach (var hit in rayHitsBetweenCameraAndParent)
         {
-            if (hit.collider.transform.IsChildOf(this.transform))
+            if (hit.collider.gameObject.TryGetComponent<Transparentizable>(out var transparentizable))
             {
-                // Same game object - do not transparentize
-            }
-            else
-            {
-                var renderers = hit.collider.GetComponents<Renderer>();
-                renderersToDisable.AddRange(renderers);
+                gameObjectsToTransparentize.Add(transparentizable);
             }
         }
 
-        foreach (var renderer in this.disabledRenderers.Except(renderersToDisable))
+        foreach (var transparentizedObject in this.transparentizedObjects.Except(gameObjectsToTransparentize))
         {
-            if (renderer != null)
+            if (transparentizedObject != null)
             {
-                foreach (var material in renderer.materials)
-                {
-                    material.ToOpaqueMode();
-                }
+                transparentizedObject.Untransparentize();
             }
         }
 
-        foreach(var renderer in renderersToDisable)
+        foreach(var objectToTransparentize in gameObjectsToTransparentize)
         {
-            foreach (var material in renderer.materials)
-            {
-                material.ToFadeMode();
-            }
+            objectToTransparentize.Transparentize();
         }
 
-        this.disabledRenderers = renderersToDisable;
+        this.transparentizedObjects = gameObjectsToTransparentize;
     }
 }

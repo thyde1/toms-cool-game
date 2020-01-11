@@ -12,12 +12,6 @@ public class PlayerController : MonoBehaviour
 
     private float yVelocity = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     // Update is called once per frame
     void Update()
     {
