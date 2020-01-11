@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2655913404262836729
+--- !u!1001 &3213995873004391866
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,22 +10,17 @@ PrefabInstance:
     - target: {fileID: 4145995129967359443, guid: 06fa74551e87b9445837ffb67193da7e,
         type: 3}
       propertyPath: m_Name
-      value: Wall (1)
+      value: Wall Rotated
       objectReference: {fileID: 0}
     - target: {fileID: 4552234460949555358, guid: 06fa74551e87b9445837ffb67193da7e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 4552234460949555358, guid: 06fa74551e87b9445837ffb67193da7e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.37
+      value: 96.1532
       objectReference: {fileID: 0}
     - target: {fileID: 4552234460949555358, guid: 06fa74551e87b9445837ffb67193da7e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.12
+      value: -2.3667655
       objectReference: {fileID: 0}
     - target: {fileID: 4552234460949555358, guid: 06fa74551e87b9445837ffb67193da7e,
         type: 3}
