@@ -20,7 +20,8 @@ public class BulletMover : MonoBehaviour
     {
         foreach (var other in others)
         {
-            if (other.gameObject.TryGetComponent<DamageTaker>(out var damageTaker))
+            var damageTaker = other.gameObject.GetComponentInParent<DamageTaker>();
+            if (damageTaker != null)
             {
                 damageTaker.TakeDamage(this.gameObject);
             }

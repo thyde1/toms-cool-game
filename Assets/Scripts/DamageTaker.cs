@@ -12,6 +12,10 @@ public class DamageTaker : MonoBehaviour
         this.TakeDamage(hit.gameObject);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        this.TakeDamage(other.gameObject);
+    }
 
     public void TakeDamage(GameObject other)
     {

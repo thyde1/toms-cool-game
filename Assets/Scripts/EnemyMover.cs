@@ -22,7 +22,10 @@ public class EnemyMover : MonoBehaviour
             return;
         }
 
-        this.characterController.Move(this.transform.InverseTransformPoint(Vector3.MoveTowards(this.transform.position, target.transform.position, Time.deltaTime * this.MoveSpeed)));
+        var this2dPosition = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+        var target2dPosition = new Vector3(this.target.transform.position.x, 0, this.target.transform.position.z);
+        var vectorTowardsTarget = this.transform.InverseTransformPoint(Vector3.MoveTowards(this2dPosition, target2dPosition, Time.deltaTime * this.MoveSpeed));
+        this.characterController.Move(vectorTowardsTarget);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
