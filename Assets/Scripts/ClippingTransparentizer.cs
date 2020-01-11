@@ -39,9 +39,8 @@ public class ClippingTransparentizer : MonoBehaviour
             {
                 foreach (var material in renderer.materials)
                 {
-                    material.color = new Color(material.color.r, material.color.g, material.color.b, 1);
+                    material.ToOpaqueMode();
                 }
-                //renderer.enabled = true;
             }
         }
 
@@ -49,9 +48,8 @@ public class ClippingTransparentizer : MonoBehaviour
         {
             foreach (var material in renderer.materials)
             {
-                material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
+                material.ToFadeMode();
             }
-            //renderer.enabled = false;
         }
 
         this.disabledRenderers = renderersToDisable;
