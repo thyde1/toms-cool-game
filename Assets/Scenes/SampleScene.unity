@@ -5423,6 +5423,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2077055176244505734, guid: b34f437677c4ce24a91a724688350190,
+        type: 3}
+      propertyPath: DeathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 63bfd5c2166cdab44bfcc883d52afb24, type: 3}
     - target: {fileID: 1233005067679648592, guid: b34f437677c4ce24a91a724688350190,
         type: 3}
       propertyPath: m_Name

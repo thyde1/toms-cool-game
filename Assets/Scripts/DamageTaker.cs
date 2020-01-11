@@ -5,6 +5,7 @@ using System.Linq;
 public class DamageTaker : MonoBehaviour
 {
     public GameObject DeathObject;
+    public AudioClip DeathSound;
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -43,6 +44,11 @@ public class DamageTaker : MonoBehaviour
             if (deathObject != null)
             {
                 Instantiate(deathObject, this.transform.position, this.transform.rotation);
+            }
+
+            if (this.DeathSound != null)
+            {
+                AudioSource.PlayClipAtPoint(this.DeathSound, this.transform.position);
             }
         }
     }

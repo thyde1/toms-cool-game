@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 1260400531544742582, guid: 87e65cd860aee764097d190e5d37eff4, type: 3}
+  FiringSound: {fileID: 8300000, guid: a2e10ba9719fdaa40a18beda87be70f5, type: 3}
   ReloadSpeed: 0.1
 --- !u!114 &-2420021191687637991
 MonoBehaviour:
