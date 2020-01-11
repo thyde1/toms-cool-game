@@ -22,10 +22,9 @@ public class EnemyMover : MonoBehaviour
             return;
         }
 
-        var this2dPosition = new Vector3(this.transform.position.x, 0, this.transform.position.z);
         var target2dPosition = new Vector3(this.target.transform.position.x, 0, this.target.transform.position.z);
-        var vectorTowardsTarget = this.transform.InverseTransformPoint(Vector3.MoveTowards(this2dPosition, target2dPosition, Time.deltaTime * this.MoveSpeed));
-        this.characterController.Move(vectorTowardsTarget);
+        this.gameObject.transform.LookAt(target2dPosition);
+        this.characterController.Move(this.transform.TransformVector(new Vector3(0, 0, Time.deltaTime * this.MoveSpeed)));
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
