@@ -3,7 +3,17 @@ guid: 214ca43c1b445fc4d9fd6cfa6179ffb7
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pig Skin.001
+    second: {fileID: 2100000, guid: ded8141a4b2662f409aeb35d92d5160a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pig face
+    second: {fileID: 2100000, guid: aae45275116227047838ddd332528cb4, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
