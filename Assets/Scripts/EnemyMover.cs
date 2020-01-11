@@ -24,4 +24,12 @@ public class EnemyMover : MonoBehaviour
 
         this.characterController.Move(this.transform.InverseTransformPoint(Vector3.MoveTowards(this.transform.position, target.transform.position, Time.deltaTime * this.MoveSpeed)));
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (this.TryGetComponent<ObjectData>(out var objectData) && objectData.DealsDamage && hit.gameObject.TryGetComponent<DamageTaker>(out var damageTaker))
+        {
+            damageTaker.TakeDamage(this.gameObject);
+        }
+    }
 }
