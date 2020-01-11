@@ -37,13 +37,21 @@ public class ClippingTransparentizer : MonoBehaviour
         {
             if (renderer != null)
             {
-                renderer.enabled = true;
+                foreach (var material in renderer.materials)
+                {
+                    material.color = new Color(material.color.r, material.color.g, material.color.b, 1);
+                }
+                //renderer.enabled = true;
             }
         }
 
         foreach(var renderer in renderersToDisable)
         {
-            renderer.enabled = false;
+            foreach (var material in renderer.materials)
+            {
+                material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
+            }
+            //renderer.enabled = false;
         }
 
         this.disabledRenderers = renderersToDisable;
