@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathObject: {fileID: 9175915531272565286, guid: c32ed6eac4864264d8e2c040c8cf6a70,
     type: 3}
-  DeathSound: {fileID: 8300000, guid: 25ddfbaefc861b84f82e477ee9823c4b, type: 3}
+  DeathSound: {fileID: 8300000, guid: ab8c29a871397284ea2ebc43061f9ab6, type: 3}
 --- !u!114 &4556461761868769116
 MonoBehaviour:
   m_ObjectHideFlags: 0
