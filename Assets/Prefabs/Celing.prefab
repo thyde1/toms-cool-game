@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7562658044501587908}
   - component: {fileID: 7562658044501587909}
   - component: {fileID: 7562658044501587910}
+  - component: {fileID: 7748592299799860316}
   m_Layer: 0
   m_Name: Celing
   m_TagString: Untagged
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7748592299799860316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562658044501587904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df92427f72170b4f9c69224e7455c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scale: 0.2
