@@ -11,22 +11,21 @@ public class BulletMover : MonoBehaviour
     void Update()
     {
         var rayHits = Physics.RaycastAll(this.transform.position, transform.TransformDirection(Vector3.forward), Time.deltaTime * Speed);
-        var hitColliders = rayHits.Select(h => h.collider);
-        this.HandleHits(hitColliders);
+        this.HandleHits(rayHits);
         this.transform.Translate(Vector3.forward * Time.deltaTime * Speed);
     }
 
-    private void HandleHits(IEnumerable<Collider> others)
+    private void HandleHits(RaycastHit[] rayHits)
     {
-        foreach (var other in others)
+        foreach (var rayHit in rayHits)
         {
-            var damageTaker = other.gameObject.GetComponentInParent<DamageTaker>();
+            var damageTaker = rayHit.collider.gameObject.GetComponentInParent<DamageTaker>();
             if (damageTaker != null)
             {
-                damageTaker.TakeDamage(this.gameObject);
+                damageTaker.TakeDamage(this.gameObject, rayHit.point);
             }
 
-            var otherObjectData = other.gameObject.GetComponent<ObjectData>();
+            var otherObjectData = rayHit.collider.gameObject.GetComponent<ObjectData>();
             if (otherObjectData != null && otherObjectData.BulletDestroyer)
             {
                 Destroy(this.gameObject);

@@ -20,8 +20,18 @@ public class DamageTaker : MonoBehaviour
         this.TakeDamage(other.gameObject);
     }
 
-    public void TakeDamage(GameObject other)
+    private void OnCollisionEnter(Collision collision)
     {
+        this.TakeDamage(collision.gameObject);
+    }
+
+    public void TakeDamage(GameObject other, Vector3? impactPosition = null)
+    {
+        if (impactPosition == null)
+        {
+            impactPosition = other.transform.position;
+        }
+
         var otherObjectData = other.GetComponent<ObjectData>();
         if (!ShouldTakeDamage(otherObjectData))
         {
@@ -32,7 +42,7 @@ public class DamageTaker : MonoBehaviour
         if (this.HitObject != null)
         {
             var hitObjectTransform = this.GetComponentInChildren<HitObjectEmitter>()?.transform ?? this.transform;
-            Instantiate(this.HitObject, hitObjectTransform.position, Quaternion.identity);
+            Instantiate(this.HitObject, impactPosition.Value, Quaternion.identity);
         }
 
         if (this.Health <= 0)
