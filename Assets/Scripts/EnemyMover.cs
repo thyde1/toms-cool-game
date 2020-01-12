@@ -31,7 +31,7 @@ public class EnemyMover : MonoBehaviour
     {
         if (this.TryGetComponent<ObjectData>(out var objectData) && objectData.DealsDamage && hit.gameObject.TryGetComponent<DamageTaker>(out var damageTaker))
         {
-            damageTaker.TakeDamage(this.gameObject);
+            damageTaker.TakeDamage(this.gameObject, hit.point);
         }
     }
 }

@@ -12,20 +12,20 @@ public class DamageTaker : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        this.TakeDamage(hit.gameObject);
+        this.TakeDamage(hit.gameObject, this.transform.position);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        this.TakeDamage(other.gameObject);
+        this.TakeDamage(other.gameObject, this.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        this.TakeDamage(collision.gameObject);
+        this.TakeDamage(collision.gameObject, collision.GetContact(0).point);
     }
 
-    public void TakeDamage(GameObject other, Vector3? impactPosition = null)
+    public void TakeDamage(GameObject other, Vector3 impactPosition)
     {
         if (impactPosition == null)
         {
@@ -41,7 +41,7 @@ public class DamageTaker : MonoBehaviour
         this.Health -= otherObjectData.DamageValue;
         if (this.HitObject != null)
         {
-            Instantiate(this.HitObject, impactPosition.Value, Quaternion.identity);
+            Instantiate(this.HitObject, impactPosition, Quaternion.identity);
         }
 
         if (this.Health <= 0)
@@ -99,7 +99,8 @@ public class DamageTaker : MonoBehaviour
         var deathObject = this.DeathObject;
         if (deathObject != null)
         {
-            Instantiate(deathObject, this.transform.position, this.transform.rotation);
+            var deathObjectPosition = this.GetComponentInChildren<DeathObjectEmitter>()?.transform?.position ?? this.transform.position;
+            Instantiate(deathObject, deathObjectPosition, this.transform.rotation);
         }
 
         if (this.DeathSound != null)
