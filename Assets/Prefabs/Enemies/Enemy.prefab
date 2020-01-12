@@ -34,6 +34,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 6038065760070120994}
+  - {fileID: 4636405997004031767}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -86,6 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathObject: {fileID: 9175915531272565286, guid: c32ed6eac4864264d8e2c040c8cf6a70,
     type: 3}
+  HitObject: {fileID: 3793397735039570559, guid: ef006d6aad19a3745beac5579dd4cb6a,
+    type: 3}
   DeathSound: {fileID: 8300000, guid: ab8c29a871397284ea2ebc43061f9ab6, type: 3}
   DamageSound: {fileID: 8300000, guid: 1bae7912c7f15c14c8b421ee857870e9, type: 3}
   Health: 10
@@ -127,6 +130,49 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 0.42258048, z: 1.0782948}
   m_Center: {x: 0.01, y: 0.9737855, z: 1.35}
+--- !u!1 &3642686216882571654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4636405997004031767}
+  - component: {fileID: 295323548814666503}
+  m_Layer: 0
+  m_Name: blood emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4636405997004031767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642686216882571654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.281, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3327727280880491777}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &295323548814666503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642686216882571654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f13118da819df42ba3edded0b9a7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1635141053020642616
 PrefabInstance:
   m_ObjectHideFlags: 0
