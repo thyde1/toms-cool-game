@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float MouseSensitivity = 1;
 
     private float yVelocity = 0;
+    private float cameraAngle = 0;
 
     // Update is called once per frame
     void Update()
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
     private void MoveCamera()
     {
         var mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity;
-        this.Camera.transform.RotateAround(this.transform.position, this.transform.TransformVector(Vector3.right), -mouseY);
+        var newRotation = Mathf.Clamp(this.cameraAngle - mouseY, -90, 90);
+        this.Camera.transform.RotateAround(this.transform.position, this.transform.TransformVector(Vector3.right), newRotation - cameraAngle);
+        this.cameraAngle = newRotation;
     }
 }
