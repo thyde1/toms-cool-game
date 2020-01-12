@@ -41,7 +41,6 @@ public class DamageTaker : MonoBehaviour
         this.Health -= otherObjectData.DamageValue;
         if (this.HitObject != null)
         {
-            var hitObjectTransform = this.GetComponentInChildren<HitObjectEmitter>()?.transform ?? this.transform;
             Instantiate(this.HitObject, impactPosition.Value, Quaternion.identity);
         }
 
