@@ -6,6 +6,8 @@ public class DamageTaker : MonoBehaviour
 {
     public GameObject DeathObject;
     public AudioClip DeathSound;
+    public AudioClip DamageSound;
+    public float Health = 1;
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -20,40 +22,73 @@ public class DamageTaker : MonoBehaviour
     public void TakeDamage(GameObject other)
     {
         var otherObjectData = other.GetComponent<ObjectData>();
-        if (!otherObjectData)
+        if (!ShouldTakeDamage(otherObjectData))
         {
             return;
+        }
+
+        this.Health -= otherObjectData.DamageValue;
+        if (this.Health <= 0)
+        {
+            this.Die();
+        }
+        else
+        {
+            if (this.DamageSound != null)
+            {
+                AudioSource.PlayClipAtPoint(this.DamageSound, this.transform.position);
+            }
+        }
+    }
+
+    private bool ShouldTakeDamage(ObjectData otherObjectData)
+    {
+        if (otherObjectData == null)
+        {
+            return false;
+        }
+
+        if (!otherObjectData.DealsDamage)
+        {
+            return false;
+        }
+
+        if (!otherObjectData)
+        {
+            return false;
         }
         var isPlayer = this.GetComponent<PlayerController>() != null;
         if (isPlayer && !otherObjectData.DealsDamageToPlayer)
         {
-            return;
+            return false;
         }
 
         if (!isPlayer && otherObjectData.DealsDamageToPlayer)
         {
-            return;
+            return false;
         }
 
-        if (otherObjectData.DealsDamage)
+        return true;
+    }
+
+    private void Die()
+    {
+        var objectCamera = this.GetComponentInChildren<Camera>();
+        if (objectCamera != null)
         {
-            var objectCamera = this.GetComponentInChildren<Camera>();
-            if (objectCamera != null)
-            {
-                objectCamera.transform.parent = null;
-            }
+            objectCamera.transform.parent = null;
+        }
 
-            Destroy(this.gameObject);
-            var deathObject = this.DeathObject;
-            if (deathObject != null)
-            {
-                Instantiate(deathObject, this.transform.position, this.transform.rotation);
-            }
+        Destroy(this.gameObject);
+        var deathObject = this.DeathObject;
+        if (deathObject != null)
+        {
+            Instantiate(deathObject, this.transform.position, this.transform.rotation);
+        }
 
-            if (this.DeathSound != null)
-            {
-                AudioSource.PlayClipAtPoint(this.DeathSound, this.transform.position);
-            }
+        if (this.DeathSound != null)
+        {
+            AudioSource.PlayClipAtPoint(this.DeathSound, this.transform.position);
         }
     }
 }

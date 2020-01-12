@@ -8,6 +8,11 @@ public class VerticalTiledTexture : MonoBehaviour
     private Material material;
     private Mesh mesh;
 
+    private void Start()
+    {
+        this.Update();
+    }
+
     private void Update()
     {
         if (this.material == null || this.mesh == null)
