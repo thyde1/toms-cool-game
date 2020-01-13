@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: arm material
+    second: {fileID: 2100000, guid: 780eea13d5bd7844c965a0a304e0a4bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: player_material
     second: {fileID: 2100000, guid: c6ed76d3960945f4d9d38a38eb8d7ecc, type: 2}
   materials:
@@ -42,7 +47,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
+    useSRGBMaterialColor: 0
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
