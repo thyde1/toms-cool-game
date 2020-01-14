@@ -9,6 +9,8 @@ public class GunBehaviour : MonoBehaviour, WeaponBehaviour
 
     private float nextShotDelay = 0;
 
+    public KeyCode HotKey => KeyCode.Alpha2;
+
     public void Fire()
     {
         if (this.nextShotDelay <= 0)

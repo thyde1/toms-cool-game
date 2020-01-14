@@ -18,12 +18,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        var weaponPosition = this.GetComponentInChildren<WeaponPosition>().transform;
-        var initialWeapon = Instantiate(this.Weapons.First());
-        initialWeapon.transform.SetParent(weaponPosition, false);
-        var weaponCameraPosition = initialWeapon.GetComponentInChildren<WeaponCameraPosition>().transform;
-        this.Camera.transform.SetParent(weaponCameraPosition, false);
-        this.currentWeapon = initialWeapon;
+        var initialWeapon = this.Weapons.First();
+        this.SetWeapon(initialWeapon);
     }
 
     // Update is called once per frame
@@ -57,6 +53,15 @@ public class PlayerController : MonoBehaviour
 
     private void HandleWeaponInput()
     {
+        foreach (var weapon in this.Weapons)
+        {
+            if (Input.GetKeyDown(weapon.GetComponentInChildren<WeaponBehaviour>().HotKey))
+            {
+                this.SetWeapon(weapon);
+                break;
+            }
+        }
+
         if (Input.GetMouseButton(0))
         {
             this.currentWeapon.GetComponentInChildren<WeaponBehaviour>().Fire();
@@ -69,5 +74,20 @@ public class PlayerController : MonoBehaviour
         var newRotation = Mathf.Clamp(this.cameraAngle - mouseY, -90, 90);
         this.Camera.transform.RotateAround(this.transform.position, this.transform.TransformVector(Vector3.right), newRotation - cameraAngle);
         this.cameraAngle = newRotation;
+    }
+
+    private void SetWeapon(GameObject weapon)
+    {
+        var weaponPosition = this.GetComponentInChildren<WeaponPosition>().transform;
+        var weaponInstance = Instantiate(weapon);
+        weaponInstance.transform.SetParent(weaponPosition, false);
+        var weaponCameraPosition = weaponInstance.GetComponentInChildren<WeaponCameraPosition>().transform;
+        this.Camera.transform.SetParent(weaponCameraPosition, false);
+        if (this.currentWeapon != null)
+        {
+            Destroy(this.currentWeapon);
+        }
+
+        this.currentWeapon = weaponInstance;
     }
 }
