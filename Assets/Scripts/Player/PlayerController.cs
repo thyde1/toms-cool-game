@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private float yVelocity = 0;
     private float cameraAngle = 0;
+    private GameObject currentWeapon;
 
     private void Start()
     {
@@ -22,12 +23,14 @@ public class PlayerController : MonoBehaviour
         initialWeapon.transform.SetParent(weaponPosition, false);
         var weaponCameraPosition = initialWeapon.GetComponentInChildren<WeaponCameraPosition>().transform;
         this.Camera.transform.SetParent(weaponCameraPosition, false);
+        this.currentWeapon = initialWeapon;
     }
 
     // Update is called once per frame
     void Update()
     {
         this.MovePlayer();
+        this.HandleWeaponInput();
         this.MoveCamera();
     }
 
@@ -50,6 +53,14 @@ public class PlayerController : MonoBehaviour
         }
         var horizontalPlaneMovement = this.gameObject.transform.TransformDirection(horizontalInput * MoveSpeed * Time.deltaTime, 0, verticalInput * MoveSpeed * Time.deltaTime);
         characterController.Move(horizontalPlaneMovement + new Vector3(0, this.yVelocity, 0) * Time.deltaTime);
+    }
+
+    private void HandleWeaponInput()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            this.currentWeapon.GetComponentInChildren<WeaponBehaviour>().Fire();
+        }
     }
 
     private void MoveCamera()

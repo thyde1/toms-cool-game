@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletShooter : MonoBehaviour
+public class GunBehaviour : MonoBehaviour, WeaponBehaviour
 {
     public GameObject Bullet;
     public AudioClip FiringSound;
@@ -9,15 +9,19 @@ public class BulletShooter : MonoBehaviour
 
     private float nextShotDelay = 0;
 
-    // Update is called once per frame
-    void Update()
+    public void Fire()
     {
-        this.nextShotDelay -= Time.deltaTime;
-        if (Input.GetMouseButton(0) && this.nextShotDelay <= 0)
+        if (this.nextShotDelay <= 0)
         {
             AudioSource.PlayClipAtPoint(this.FiringSound, this.transform.position);
             Instantiate(this.Bullet, this.transform.position, this.transform.rotation);
             this.nextShotDelay = this.ReloadSpeed;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        this.nextShotDelay -= Time.deltaTime;
     }
 }
