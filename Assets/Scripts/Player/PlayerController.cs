@@ -93,7 +93,8 @@ public class PlayerController : MonoBehaviour
         var weaponInstance = Instantiate(weapon);
         weaponInstance.transform.SetParent(weaponPosition, false);
         var weaponCameraPosition = weaponInstance.GetComponentInChildren<WeaponCameraPosition>().transform;
-        this.Camera.transform.SetParent(weaponCameraPosition, false);
+        this.Camera.transform.SetPositionAndRotation(weaponCameraPosition.position, weaponCameraPosition.rotation);
+        this.Camera.transform.RotateAround(this.transform.position, this.transform.TransformVector(Vector3.right), this.cameraAngle);
         if (this.currentWeapon != null)
         {
             Destroy(this.currentWeapon);
