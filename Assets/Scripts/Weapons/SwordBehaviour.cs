@@ -3,10 +3,17 @@ using System.Collections;
 
 public class SwordBehaviour : MonoBehaviour, WeaponBehaviour
 {
+    private Animator playerAnimator;
+
     public KeyCode HotKey => KeyCode.Alpha1;
+
+    private void OnTransformParentChanged()
+    {
+        this.playerAnimator = this.GetComponentInParent<PlayerController>().GetComponentInChildren<Animator>();
+    }
 
     public void Fire()
     {
-        throw new System.NotImplementedException();
+        this.playerAnimator.SetTrigger("Sword Attack");
     }
 }
