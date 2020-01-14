@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private float yVelocity = 0;
     private float cameraAngle = 0;
     private GameObject currentWeapon;
+    private WeaponBehaviour currentWeaponBehaviour;
 
     private void Start()
     {
@@ -64,7 +66,24 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            this.currentWeapon.GetComponentInChildren<WeaponBehaviour>().Fire();
+            this.currentWeaponBehaviour.Fire();
+        }
+
+        var mouseScrollDelta = Input.mouseScrollDelta.y;
+        if (mouseScrollDelta != 0)
+        {
+            var currentWeaponIndex = Array.FindIndex(this.Weapons, w => w.GetComponentInChildren<WeaponBehaviour>().HotKey == this.currentWeaponBehaviour.HotKey);
+            var newWeaponIndex = currentWeaponIndex + Mathf.RoundToInt(Mathf.Clamp(mouseScrollDelta, -1, 1));
+            if (newWeaponIndex > this.Weapons.Count() - 1)
+            {
+                newWeaponIndex = 0;
+            }
+            else if (newWeaponIndex < 0)
+            {
+                newWeaponIndex = this.Weapons.Count() - 1;
+            }
+
+            this.SetWeapon(this.Weapons[newWeaponIndex]);
         }
     }
 
@@ -89,5 +108,6 @@ public class PlayerController : MonoBehaviour
         }
 
         this.currentWeapon = weaponInstance;
+        this.currentWeaponBehaviour = weaponInstance.GetComponentInChildren<WeaponBehaviour>();
     }
 }
