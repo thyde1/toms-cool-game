@@ -14,6 +14,6 @@ public abstract class MeleeBehaviour : MonoBehaviour, WeaponBehaviour
 
     public void Fire()
     {
-        this.playerAnimator.SetTrigger("Sword Attack");
+        this.playerAnimator.SetTrigger("Melee Attack");
     }
 }
