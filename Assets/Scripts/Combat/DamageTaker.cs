@@ -38,7 +38,14 @@ public class DamageTaker : MonoBehaviour
             return;
         }
 
-        this.Health -= otherObjectData.DamageValue;
+        var damage = otherObjectData.GetDamage(this);
+        if (damage == 0)
+        {
+            return;
+        }
+
+        this.Health -= damage;
+        otherObjectData.DamageDealt(this);
         if (this.HitObject != null)
         {
             Instantiate(this.HitObject, impactPosition, Quaternion.identity);

@@ -11,6 +11,7 @@ public abstract class MeleeBehaviour : MonoBehaviour, WeaponBehaviour
     private void Start()
     {
         this.damageDealer = this.GetComponent<DamageDealer>();
+        this.damageDealer.OnDamageDealt.AddListener(OnDamageDealt);
     }
 
     private void OnTransformParentChanged()
@@ -31,5 +32,11 @@ public abstract class MeleeBehaviour : MonoBehaviour, WeaponBehaviour
     public void DeactivateDamage()
     {
         this.damageDealer.DealsDamage = false;
+        this.damageDealer.ClearInvulnerableTakers();
+    }
+
+    private void OnDamageDealt(DamageTaker taker)
+    {
+        this.damageDealer.MakeTakerInvulnerable(taker);
     }
 }
