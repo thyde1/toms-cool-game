@@ -1,19 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SwordBehaviour : MonoBehaviour, WeaponBehaviour
+public class SwordBehaviour : MeleeBehaviour
 {
-    private Animator playerAnimator;
-
-    public KeyCode HotKey => KeyCode.Alpha1;
-
-    private void OnTransformParentChanged()
-    {
-        this.playerAnimator = this.GetComponentInParent<PlayerController>().GetComponentInChildren<Animator>();
-    }
-
-    public void Fire()
-    {
-        this.playerAnimator.SetTrigger("Sword Attack");
-    }
+    public override KeyCode HotKey => KeyCode.Alpha1;
 }

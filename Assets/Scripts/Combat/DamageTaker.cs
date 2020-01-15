@@ -32,7 +32,7 @@ public class DamageTaker : MonoBehaviour
             impactPosition = other.transform.position;
         }
 
-        var otherObjectData = other.GetComponent<ObjectData>();
+        var otherObjectData = other.GetComponentInParent<ObjectData>();
         if (!ShouldTakeDamage(otherObjectData))
         {
             return;

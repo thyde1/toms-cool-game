@@ -57,7 +57,7 @@ MonoBehaviour:
   CollidesWithCharacters: 1
   DealsDamage: 1
   DealsDamageToPlayer: 0
-  DamageValue: 10
+  DamageValue: 5
 --- !u!1001 &1457422500630265514
 PrefabInstance:
   m_ObjectHideFlags: 0

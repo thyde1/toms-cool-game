@@ -199,6 +199,7 @@ MonoBehaviour:
   Weapons:
   - {fileID: 7211962784466116700, guid: 2e5717031c3991a489b4dfcb412d474a, type: 3}
   - {fileID: 8317640718528481003, guid: 1e20b730a49bd09438b81e191b220050, type: 3}
+  - {fileID: 2412376426212159808, guid: 1eb628bfa27f25e43b9b68119bcaa2b8, type: 3}
 --- !u!143 &1233005067679648598
 CharacterController:
   m_ObjectHideFlags: 0
