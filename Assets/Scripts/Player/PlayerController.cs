@@ -84,6 +84,11 @@ public class PlayerController : MonoBehaviour
                 newWeaponIndex = this.Weapons.Count() - 1;
             }
 
+            if (newWeaponIndex == currentWeaponIndex)
+            {
+                return;
+            }
+
             this.SetWeapon(this.Weapons[newWeaponIndex]);
         }
     }

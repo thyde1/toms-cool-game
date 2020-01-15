@@ -8,7 +8,13 @@ public class MeleeAttackAnimatorBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Makes melee weapon cause damage on contact
-        animator.gameObject.GetComponentInChildren<DamageDealer>().DealsDamage = true;
+        var meleeWeapon = animator.gameObject.GetComponentInChildren<DamageDealer>();
+        if (meleeWeapon == null)
+        {
+            return;
+        }
+
+        meleeWeapon.DealsDamage = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,7 +27,13 @@ public class MeleeAttackAnimatorBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Stops melee weapon causing damage on contact
-        animator.gameObject.GetComponentInChildren<DamageDealer>().DealsDamage = false;  
+        var meleeWeapon = animator.gameObject.GetComponentInChildren<DamageDealer>();
+        if (meleeWeapon == null)
+        {
+            return;
+        }
+
+        meleeWeapon.DealsDamage = false;  
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
