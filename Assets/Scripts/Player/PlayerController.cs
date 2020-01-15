@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        this.PutCameraLevelWithWeaponPosition();
         var initialWeapon = this.Weapons.First();
         this.SetWeapon(initialWeapon);
     }
@@ -92,9 +93,6 @@ public class PlayerController : MonoBehaviour
         var weaponPosition = this.GetComponentInChildren<WeaponPosition>().transform;
         var weaponInstance = Instantiate(weapon);
         weaponInstance.transform.SetParent(weaponPosition, false);
-        var weaponCameraPosition = weaponInstance.GetComponentInChildren<WeaponCameraPosition>().transform;
-        this.Camera.transform.SetPositionAndRotation(weaponCameraPosition.position, weaponCameraPosition.rotation);
-        this.Camera.transform.RotateAround(this.transform.position, this.transform.TransformVector(Vector3.right), this.cameraAngle);
         if (this.currentWeapon != null)
         {
             Destroy(this.currentWeapon);
@@ -110,5 +108,12 @@ public class PlayerController : MonoBehaviour
         var newRotation = Mathf.Clamp(this.cameraAngle - mouseY, -90, 90);
         this.Camera.transform.RotateAround(this.transform.position, this.transform.TransformVector(Vector3.right), newRotation - cameraAngle);
         this.cameraAngle = newRotation;
+    }
+
+    private void PutCameraLevelWithWeaponPosition()
+    {
+        var initialCameraPosition = this.Camera.transform.position;
+        var newCameraPosition = new Vector3(this.GetComponentInChildren<WeaponPosition>().transform.position.x, initialCameraPosition.y, initialCameraPosition.z);
+        this.Camera.transform.SetPositionAndRotation(newCameraPosition, Quaternion.identity);
     }
 }
