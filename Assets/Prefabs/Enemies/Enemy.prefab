@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5486025887007767179}
   - component: {fileID: 3720052451314325136}
   - component: {fileID: 4340970412587142357}
+  - component: {fileID: 2322225082531210614}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -52,9 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletDestroyer: 1
   CollidesWithCharacters: 1
-  DealsDamage: 1
-  DealsDamageToPlayer: 1
-  DamageValue: 1
 --- !u!143 &-9163386241567860792
 CharacterController:
   m_ObjectHideFlags: 0
@@ -130,6 +128,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 0.42258048, z: 1.0782948}
   m_Center: {x: 0.01, y: 0.9737855, z: 1.35}
+--- !u!114 &2322225082531210614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625650699697344975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc08d54d5ba7cd04286a6d2c00910c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DealsDamage: 1
+  DealsDamageToPlayer: 1
+  DamageValue: 1
 --- !u!1 &3642686216882571654
 GameObject:
   m_ObjectHideFlags: 0

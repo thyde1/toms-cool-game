@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc08d54d5ba7cd04286a6d2c00910c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DealsDamage: 1
+  DealsDamage: 0
   DealsDamageToPlayer: 0
   DamageValue: 5
 --- !u!1001 &1457422500630265514

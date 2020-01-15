@@ -112,8 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void PutCameraLevelWithWeaponPosition()
     {
-        var initialCameraPosition = this.Camera.transform.position;
-        var newCameraPosition = new Vector3(this.GetComponentInChildren<WeaponPosition>().transform.position.x, initialCameraPosition.y, initialCameraPosition.z);
-        this.Camera.transform.SetPositionAndRotation(newCameraPosition, Quaternion.identity);
+        var newCameraPosition = new Vector3(this.GetComponentInChildren<WeaponPosition>().transform.position.x, this.Camera.transform.position.y, this.Camera.transform.position.z);
+        this.Camera.transform.SetPositionAndRotation(newCameraPosition, this.Camera.transform.rotation);
     }
 }
