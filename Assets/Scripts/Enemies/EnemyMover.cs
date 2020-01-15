@@ -29,7 +29,7 @@ public class EnemyMover : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (this.TryGetComponent<ObjectData>(out var objectData) && objectData.DealsDamage && hit.gameObject.TryGetComponent<DamageTaker>(out var damageTaker))
+        if (this.TryGetComponent<DamageDealer>(out var objectData) && objectData.DealsDamage && hit.gameObject.TryGetComponent<DamageTaker>(out var damageTaker))
         {
             damageTaker.TakeDamage(this.gameObject, hit.point);
         }

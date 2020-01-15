@@ -32,7 +32,7 @@ public class DamageTaker : MonoBehaviour
             impactPosition = other.transform.position;
         }
 
-        var otherObjectData = other.GetComponentInParent<ObjectData>();
+        var otherObjectData = other.GetComponentInParent<DamageDealer>();
         if (!ShouldTakeDamage(otherObjectData))
         {
             return;
@@ -57,7 +57,7 @@ public class DamageTaker : MonoBehaviour
         }
     }
 
-    private bool ShouldTakeDamage(ObjectData otherObjectData)
+    private bool ShouldTakeDamage(DamageDealer otherObjectData)
     {
         if (otherObjectData == null)
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599d504e8e358be4f8aaa9eaac3c8043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9132450827223304412
+--- !u!114 &5674276726576511101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21,27 +21,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2412376426212159808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 605413fcfa534184e9df03922d75259b, type: 3}
+  m_Script: {fileID: 11500000, guid: bc08d54d5ba7cd04286a6d2c00910c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletDestroyer: 0
-  CollidesWithCharacters: 0
   DealsDamage: 1
   DealsDamageToPlayer: 0
   DamageValue: 10
---- !u!65 &3294334695394915967
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5018998380468296249}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.902082, y: 2.956438, z: 7.6844597}
-  m_Center: {x: 0.081517845, y: 15.705762, z: 0.13586402}
 --- !u!54 &4839298293858377020
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -58,6 +43,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3294334695394915967
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018998380468296249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.902082, y: 2.956438, z: 7.6844597}
+  m_Center: {x: 0.081517845, y: 15.705762, z: 0.13586402}
 --- !u!1001 &1769945763820137413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,7 +182,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b3d1e54e8312f4943b7955f323108241,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b3d1e54e8312f4943b7955f323108241,
         type: 3}
