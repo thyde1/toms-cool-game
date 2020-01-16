@@ -25,5 +25,6 @@ public class GunBehaviour : MonoBehaviour, WeaponBehaviour
     void Update()
     {
         this.nextShotDelay -= Time.deltaTime;
+        this.transform.parent.parent.Rotate(Vector3.right, -Input.GetAxis("Mouse Y"));
     }
 }

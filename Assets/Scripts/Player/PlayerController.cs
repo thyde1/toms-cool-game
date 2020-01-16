@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         this.MovePlayer();
         this.HandleWeaponInput();
-        this.MoveCamera();
+        //this.MoveCamera();
     }
 
     private void MovePlayer()
