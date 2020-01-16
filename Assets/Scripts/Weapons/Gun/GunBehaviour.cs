@@ -8,8 +8,16 @@ public class GunBehaviour : MonoBehaviour, WeaponBehaviour
     public float ReloadSpeed = 0.1f;
 
     private float nextShotDelay = 0;
+    private Transform pivot;
+    private PlayerController player;
 
     public KeyCode HotKey => KeyCode.Alpha2;
+
+    private void Start()
+    {
+        this.pivot = this.GetComponentInParent<AimPivot>().transform;
+        this.player = this.GetComponentInParent<PlayerController>();
+    }
 
     public void Fire()
     {
@@ -25,6 +33,6 @@ public class GunBehaviour : MonoBehaviour, WeaponBehaviour
     void Update()
     {
         this.nextShotDelay -= Time.deltaTime;
-        this.transform.parent.parent.Rotate(Vector3.right, -Input.GetAxis("Mouse Y"));
+        this.pivot.localRotation = Quaternion.Euler(this.player.GetCameraAngle(), 0, 0);
     }
 }

@@ -30,7 +30,12 @@ public class PlayerController : MonoBehaviour
     {
         this.MovePlayer();
         this.HandleWeaponInput();
-        //this.MoveCamera();
+        this.MoveCamera();
+    }
+
+    public float GetCameraAngle()
+    {
+        return this.cameraAngle;
     }
 
     private void MovePlayer()

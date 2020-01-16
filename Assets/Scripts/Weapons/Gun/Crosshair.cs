@@ -7,6 +7,7 @@ public class Crosshair : MonoBehaviour
     public float Size = 10;
 
     private Camera playerCamera;
+    private Vector2 position;
 
     // Use this for initialization
     void Start()
